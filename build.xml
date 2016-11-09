@@ -47,7 +47,7 @@
 <!-- Run any DB schema updates --> 
 <target name="dbupdate" depends="clean" description="Update Schema">
 <exec executable="php" failonerror="true">
-	<arg value='app/console' />
+	<arg value='bin/console' />
     <arg value="doctrine:schema:update" />
     <arg value='-n' />
 </exec>
@@ -56,7 +56,7 @@
 <!-- Update fixtures--> 
 <target name="fixtures" depends="clean" description="Update fixtures">
 <exec executable="php" failonerror="true">
-	<arg value='app/console' />
+	<arg value='bin/console' />
     <arg value="doctrine:fixtures:load" />
     <arg value='-n' />
 </exec>
@@ -66,7 +66,7 @@
  <target name="lint" description="Perform syntax check of sourcecode files">
   <apply executable="php" failonerror="true">
    <arg value="-l" />  
-   	<fileset dir="${basedir}/app">
+   	<fileset dir="${basedir}/src">
     	<include name="**/*.php" />
     <modified />
    </fileset>
@@ -75,7 +75,7 @@
  
 <!-- PHPLoc (Lines Of Code) report -->  
  <target name="phploc" description="Measure project size using PHPLOC">
-  <exec executable="phploc">
+  <exec executable="vendor/bin/phploc">
    <arg value="--log-csv" />
    <arg value="${basedir}/build/logs/phploc.csv" />
    <arg path="${basedir}/app" />
@@ -84,8 +84,8 @@
 
 <!-- PHP Mess Detector -->
 <target name="phpmd" description="Perform project mess detection using PHPMD creating a log file for the continuous integration server">
-  <exec executable="phpmd">
-   <arg path="${basedir}/app" />
+  <exec executable="vendor/bin/phpmd">
+   <arg path="${basedir}/src" />
    <arg value="xml" />
    <arg value="codesize,unusedcode,naming" />
    <arg value="--reportfile" />
@@ -95,27 +95,29 @@
  
 <!-- PHP Copy Paste Detector -->
 <target name="phpcpd" description="Find duplicate code using PHPCPD">
-  <exec executable="phpcpd">
+  <exec executable="vendor/bin/phpcpd">
    <arg value="--log-pmd" />
    <arg value="${basedir}/build/logs/pmd-cpd.xml" />
-   <arg path="${basedir}/app" />
+   <arg path="${basedir}/src" />
   </exec>
  </target>
 
 <!-- PHP Code Sniffer - tokenises PHP, JS and CSS files and detects violations of defined coding standards --> 
  <target name="phpcs" description="Check code with PHP Code Sniffer">
- <exec executable="phpcs">
+ <exec executable="vendor/bin/phpcs">
   <arg value="-n" />
   <arg value="--extensions=php" />
   <arg value="--error-severity=1" />
-  <arg path="${basedir}/app" />
+  <arg path="${basedir}/src" />
  </exec>
 </target> 
 
 <!-- Kick off phpunit --> 
  <target name="phpunit">
-  <exec dir="${basedir}/app" executable="/usr/bin/phpunit364" failonerror="true" description="Run unit app with PHPUnit 3.6.4">
+  <exec dir="${basedir}" executable="phpunit" failonerror="true" description="Run unit app with PHPUnit 3.6.4">
   <arg line="--verbose" />   
+  <arg line="-c" />
+  <arg line="." />   
   </exec>
  </target>
 
