@@ -8,6 +8,9 @@
 <target name="build-parallel"
    depends="prepare, vendors, dbupdate, fixtures, lint, tools-parallel, phpcpd, phpunit"/>
 
+<target name="check"
+   depends="lint, phploc, phpmd, phpcpd, phpcs, phpunit"/>
+
 <property environment="env"/>
 
 <target name="tools-parallel" description="Run tools in parallel">
