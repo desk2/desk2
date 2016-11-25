@@ -1,13 +1,12 @@
 {% block javascripts %}
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Core JS -->
-    <script src="/assets/bower_components/jquery/dist/jquery.js"></script>
-    <script src="/assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="/assets/bower_components/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="{{ asset('assets/bower_components/angular/angular.min.js') }}"></script>
+    <script src="{{ asset('assets/bower_components/jquery/dist/jquery.js') }}"></script>
+    <script src="{{ asset('assets/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
+    <script src="{{ asset('assets/js/mvpready/core.js') }}"></script>
+    <script src="{{ asset('assets/js/mvpready/helpers.js') }}"></script>
+    <script src="{{ asset('assets/js/mvpready/account.js') }}"></script>
+    <script src="{{ asset('assets/js/mvpready/admin.js') }}"></script>
 
-    <!-- App JS -->
-    <script src="/assets/javascripts/app-core.js"></script>
-    <script src="/assets/javascripts/app-helpers.js"></script>
-    <script src="/assets/javascripts/app.js"></script>
+    <script src="{{ asset('assets/js/app.js') }}"></script>
 {% endblock %}

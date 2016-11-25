@@ -1,0 +1,23 @@
+{
+  "name": "desk2",
+  "homepage": "https://github.com/desk2/desk2",
+  "authors": [
+    "Alex Dmitriev <dmitriev_a@rambler.ru>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "font-awesome": "fontawesome#^4.7.0",
+    "angular": "^1.5.9",
+    "jquery-slimscroll": "^1.3.8"
+  }
+}

@@ -2,7 +2,7 @@
 
 {% block body %}
 
-    <div class="account-wrapper">
+    <div class="account-wrapper" ng-controller="ngLoginController">
 
         <div class="account-body">
 
@@ -37,11 +37,4 @@
 
     </div> <!-- /.account-wrapper -->
 
-{% endblock %}
-
-{% block javascripts %}
-    {{ parent() }}
-
-    <!-- Demo JS -->
-    <script src="/assets/javascripts/app-account.js"></script>
 {% endblock %}
